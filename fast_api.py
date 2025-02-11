@@ -12,7 +12,7 @@ def get_prediction(image):
     original_area = img_width * img_height
     # model = YOLO("yolo-Weights/diet_engine_all_best_4.pt")
     model = YOLO("yolo-Weights/ultimate_diet_engine.pt")
-    results = model.predict(image)
+    results = model.predict(image, device='mps')
     result = results[0]
     output = []
     for box in result.boxes:
