@@ -1,15 +1,17 @@
 import cv2
 import supervision as sv
 from ultralytics import YOLO
+import torch
 
 class ModelDetector:
-    def __init__(self, model_path="yolo-Weights/ultimate_diet_engine.pt"):
+    def __init__(self, model_path="yolo-Weights/yolo11m.pt"):
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "mps")
         self.model = YOLO(model_path)
         self.box_annotator = sv.BoxAnnotator()
         self.label_annotator = sv.LabelAnnotator()
     
     def detect_and_annotate(self, image):
-        results = self.model(image, device='mps')[0]
+        results = self.model(image, device=self.device)[0]
         detections = sv.Detections.from_ultralytics(results)
         box_annotator = sv.BoxAnnotator()
         label_annotator = sv.LabelAnnotator()
@@ -49,5 +51,5 @@ if __name__ == "__main__":
     detector = ModelDetector()
     
     # Uncomment the required mode
-    detector.process_image("images/boiled1.jpg")
-    # detector.process_webcam()
+    # detector.process_image("images/boiled1.jpg")
+    detector.process_webcam()

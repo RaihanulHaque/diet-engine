@@ -3,6 +3,9 @@ from PIL import Image
 from io import BytesIO
 from ultralytics import YOLO
 import cv2
+import torch
+
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 
 app = FastAPI()
 
@@ -12,7 +15,7 @@ def get_prediction(image):
     original_area = img_width * img_height
     # model = YOLO("yolo-Weights/diet_engine_all_best_4.pt")
     model = YOLO("yolo-Weights/ultimate_diet_engine.pt")
-    results = model.predict(image, device='mps')
+    results = model.predict(image, device=DEVICE)
     result = results[0]
     output = []
     for box in result.boxes:
