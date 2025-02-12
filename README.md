@@ -1,6 +1,6 @@
 # Diet Engine
 
-This repository contains the code for the Diet Engine project, which includes training and inference scripts for a YOLO-based object detection model. The project is designed to detect and classify various food items in images and videos.
+This repository contains the code for the Diet Engine project, which includes training and inference scripts for a YOLO-based custom finetuned object detection model on a customised dataset. The project is designed to detect and classify various food items with calories in images and videos.
 
 ## Table of Contents
 - [Installation](#installation)
