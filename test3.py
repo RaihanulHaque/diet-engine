@@ -7,7 +7,7 @@ class VideoProcessor:
     def __init__(self, source_video) -> None:
         self.source_video = source_video
         # self.model = YOLO("yolo-Weights/diet_engine_all_best_4.pt")
-        self.model = YOLO("yolov8m.pt")
+        self.model = YOLO("yolo11m.pt")
         self.box_annotator = sv.BoxAnnotator()
 
     def show_video(self):
@@ -27,7 +27,8 @@ class VideoProcessor:
         cv2.destroyAllWindows()
 
     def predict(self, frame: np.ndarray):
-        return self.model.predict(frame)[0]
+        # return self.model.predict(frame)[0]
+        return self.model(frame, device='mps')[0]
 
     def get_food_size_and_calorie(self, name, area_ratio):
         if name == 'apple':

@@ -124,5 +124,5 @@ def benchmark_model_with_visuals(image_folder):
 
 
 # Example usage
-image_folder = '/home/rahi/Code/SeeFood-V2/dataset_2'
+image_folder = 'images'
 benchmark_model_with_visuals(image_folder)
