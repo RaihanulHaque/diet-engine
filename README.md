@@ -15,7 +15,7 @@ This repository contains the code for the Diet Engine project, which includes tr
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/diet-engine.git
+    git clone https://github.com/RaihanulHaque/diet-engine.git
     cd diet-engine
     ```
 
@@ -74,7 +74,7 @@ This repository contains the code for the Diet Engine project, which includes tr
 2. Run inference on a video:
     ```python
     from predict_food import VideoProcessor
-    
+
     processor = VideoProcessor(0)
     processor.show_video()
     ```
